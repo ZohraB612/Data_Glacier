@@ -10,7 +10,7 @@ def process_image(image_path):
     # Resize the image to 28x28
     resized_image = image.resize((28, 28))
 
-    # Convert the image to grayscale
+    # Convert the image to grayscale<
     grayscale_image = resized_image.convert('L')
 
     # Normalize the pixel values
