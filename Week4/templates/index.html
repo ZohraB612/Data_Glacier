@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNIST Task</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 500px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+        }
+
+        .file-upload:hover {
+            background-color: #45a049;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 100px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        .file-info {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .file-types {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .predict-btn {
+            display: block;
+            margin: 20px auto 0;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 40px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .predict-btn:hover {
+            background-color: #555;
+        }
+
+        .upload-status {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MNIST Task</h1>
+        <p>Please upload an image of a handwritten digit (0-9).</p>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <div class="upload-status" id="uploadStatus"></div>
+            <div class="file-info">(Accepted file types: .jpg, .png, .jpeg)</div>
+            <label class="file-upload">
+                <input type="file" name="file" accept=".jpg, .png, .jpeg">
+                Upload File
+            </label>
+            <button class="predict-btn" type="submit">Predict</button>
+        </form>
+    </div>
+
+    <script>
+        const fileUploadInput = document.querySelector('input[type="file"]');
+        const uploadStatus = document.getElementById('uploadStatus');
+
+        fileUploadInput.addEventListener('change', function () {
+            const fileName = fileUploadInput.value.split('\\').pop();
+            uploadStatus.textContent = `File uploaded: ${fileName}`;
+        });
+    </script>
+</body>
+</html>
