@@ -11,7 +11,9 @@ def process_image(image_path):
     resized_image = image.resize((28, 28))
 
     # Convert the image to grayscale<
-    grayscale_image = resized_image.convert('L')
+    grayscale_image = resized_image.convert('L') 
+
+    # new comment
 
     # Normalize the pixel values
     normalized_image = np.array(grayscale_image) / 255.0
